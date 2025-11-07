@@ -6,18 +6,22 @@ document.addEventListener('DOMContentLoaded', function() {
     const taskList = document.getElementById('task-list'); 
  
     addButton.addEventListener('click', function() { 
-        const taskText = taskInput.value; 
+    const taskText = taskInput.value; 
  
-        if (taskText.trim() !== "") { 
-            // Tạo một <li> mới 
-            const newTask = document.createElement('li'); 
-            newTask.textContent = taskText; 
+    // Áp dụng "early return" 
+    if (taskText.trim() === "") { 
+        alert("Vui lòng nhập nội dung!"); // Thêm tí bonus 
+        return;  
+    } 
  
-            // Thêm vào danh sách 
-            taskList.appendChild(newTask); 
+    // Tạo một <li> mới 
+    const newTask = document.createElement('li'); 
+    newTask.textContent = taskText; 
  
-            // Xóa nội dung input 
-            taskInput.value = ""; 
-        } 
-    }); 
+    // Thêm vào danh sách 
+    taskList.appendChild(newTask); 
+ 
+    // Xóa nội dung input 
+    taskInput.value = ""; 
+}); 
 });
